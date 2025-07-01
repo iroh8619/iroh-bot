@@ -671,4 +671,4 @@ if (interaction.commandName === "pai_sho_pairs") {
 
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.DISCORD_TOKEN);
