@@ -70,8 +70,50 @@ client.on('ready', () => {
   setInterval(updateActivity, 10000);
 });
 
+async function updatePlayersOnGitHub() {
+  const filePath = './players.json';
+  const githubRepo = 'iroh8619/iroh-bot';
+  const githubFilePath = 'players.json';
+  const githubToken = process.env.GITHUB_TOKEN;
+
+  const content = fs.readFileSync(filePath, 'utf8');
+  const encodedContent = Buffer.from(content).toString('base64');
+
+  try {
+    // Récupérer le SHA du fichier actuel sur GitHub
+    const getRes = await fetch(`https://api.github.com/repos/${githubRepo}/contents/${githubFilePath}`, {
+      headers: {
+        Authorization: `token ${githubToken}`,
+        Accept: 'application/vnd.github.v3+json'
+      }
+    });
+
+    const fileData = await getRes.json();
+    const sha = fileData.sha;
+
+    // Mettre à jour le fichier
+    await fetch(`https://api.github.com/repos/${githubRepo}/contents/${githubFilePath}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${githubToken}`,
+        Accept: 'application/vnd.github.v3+json'
+      },
+      body: JSON.stringify({
+        message: '📝 Update players.json',
+        content: encodedContent,
+        sha
+      })
+    });
+
+    console.log('✅ players.json successfully pushed to GitHub.');
+  } catch (err) {
+    console.error('❌ Failed to update players.json on GitHub:', err.message);
+  }
+}
+
 function saveUsers() {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+  updatePlayersOnGitHub();
 }
 
 function getCoords(index) {
