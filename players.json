@@ -24,7 +24,10 @@
   },
   "707124653482836009": {
     "name": "uncle_iroh_advice",
-    "points": 10,
-    "bestTime": 88
+    "points": 5,
+    "bestTime": 88,
+    "startTimestamps": [
+      1751800159412
+    ]
   }
 }
