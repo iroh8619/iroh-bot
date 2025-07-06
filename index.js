@@ -323,7 +323,7 @@ setTimeout(() => {
   }
   if (!interaction.isCommand()) return;
   
-    const allowedChannelName1 = 'find-uncle-iroh';
+    const allowedChannelName1 = 'irohs-office';
     const allowedChannelName2 = 'irohs-office'
 
   if (interaction.channel.name !== allowedChannelName1 && interaction.channel.name !== allowedChannelName2) {
@@ -399,8 +399,8 @@ if (!users[userId]) {
   
   //Command Find Uncle Iroh
 
-if (interaction.commandName === 'find_uncle_iroh') {
-  const allowedChannelName = 'find-uncle-iroh';
+if (interaction.commandName === 'irohs-office') {
+  const allowedChannelName = 'irohs-office';
 
   if (interaction.channel.name !== allowedChannelName) {
     const wrongChannelEmbed = {
