@@ -324,7 +324,7 @@ setTimeout(() => {
   if (!interaction.isCommand()) return;
   
     const allowedChannelName1 = 'find-uncle-iroh';
-    const allowedChannelName2 = 'pai-sho-pairs'
+    const allowedChannelName2 = 'irohs-office'
 
   if (interaction.channel.name !== allowedChannelName1 && interaction.channel.name !== allowedChannelName2) {
     const wrongChannelEmbed = {
